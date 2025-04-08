@@ -9,4 +9,10 @@ public class ContaCorrente extends Conta {
     @Override
     public void transferir(double valor, Conta contaDestino) {
     }
+
+    @Override
+    public void imprimirExtrato() {
+        System.out.println("-------Extrato da conta corrente-------");
+        super.impressaoExtrato();
+    }
 }

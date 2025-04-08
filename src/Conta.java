@@ -14,12 +14,26 @@ public abstract class Conta implements RegrasConta { //Conta abstrata para que n
 
     @Override
     public void sacar(double valor) {
+        saldo -= valor;
     }
     @Override
     public void depositar(double valor) {
+        saldo += valor;
     }
     @Override
     public void transferir(double valor, Conta contaDestino) {
+        this.sacar(valor);
+        contaDestino.depositar(valor);
+    }
+
+    protected void impressaoExtrato(){
+        System.out.printf("Agencia: %d%n", this.agencia);
+        System.out.printf("Número: %d%n",this.numero);
+        System.out.printf("Saldo: %.2f%n", this.saldo);
+    }
+
+    protected void rendimentoPoupanca(double valor){
+        this.saldo += this.saldo * 0.5;
     }
 
     public int getAgencia() {
